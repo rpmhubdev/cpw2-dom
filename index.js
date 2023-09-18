@@ -61,22 +61,33 @@ function search(){
     const campoNome = document.getElementById('name');
     const busca = document.getElementById('search');
     const nome = campoNome.value.toLowerCase();
+    // nomeFiltrado é uma string que vai do primeiro ao último caractere digitado no inputbox
     const nomeFiltrado = nome.substr(0,nome.length);
-       
+    
+    // função que cria nós filhos dentro da área de busca contendo os nomes que estão na lista de dados
     function exibirLista(dados) {
         
         busca.innerHTML = '';
 
-        dados.forEach(function(item) {
+        dados.forEach(
+            function(item) {
             const divItem = document.createElement("div");
             divItem.textContent = `${item.name}`;
-            busca.appendChild(divItem);
-        });
+            busca.appendChild(divItem);  
+        }); 
     }
   
-    let dadosFiltrados = dadosFiltrados = data.filter(item => item.name.toLowerCase().includes(nomeFiltrado));  
- 
-   exibirLista(dadosFiltrados);
+    // dadosFiltrados filtra dentro dos nomes, os que incluem nomeFiltrado
+    let dadosFiltrados = data.filter(
+        item => item.name.toLowerCase().includes(nomeFiltrado)
+        );  
+   
+    // Remove os nós filhos caso não tenha nada escrito no campo
+    if (nomeFiltrado.length > 0) {
+        exibirLista(dadosFiltrados);
+    }else{
+        removeAllChildren(busca);
+   }
 }
 
 /**

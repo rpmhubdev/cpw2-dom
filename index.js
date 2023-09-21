@@ -10,6 +10,9 @@ function background(){
      * alterar o background do body para a cor #BECCC3.
      */
 
+    var body = document.body;
+    body.style.background = "#BECCC3";
+
 }
 
 /**
@@ -25,6 +28,10 @@ function show(){
       * Recupera os valores dos campos de texto cujo o id='fname' e id='lname' e apresente o nome
       * e o sobrenome de uma pessoa (separado por um espaço) na div id='result'
       */
+
+    var first = document.getElementById("fname").value;
+    var last = document.getElementById("lname").value;
+    document.getElementById("result").innerHTML = first + " " + last;
 }
 
 /**
@@ -34,6 +41,23 @@ function show(){
 function search(){
 
     var data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
+    let procura = document.getElementById("name").value;
+    let mostraResultado = document.getElementById("search");
+    let newData = [];
+
+    for (i=0; i<data.length; i++){
+        if (procura == "") {
+            mostraResultado.innerHTML = "";
+        } else if (data[i].name.substring(0,procura.length).toUpperCase() === procura.toUpperCase()){
+            newData.push(data[i].name);
+        }
+    }
+
+    mostraResultado.innerHTML = newData;
+    
+    //Solução Alternativa, mas que provavelmente não passaria em todos os testes
+    //const searchData = document.getElementById("name").value;
+    //document.getElementById("search").innerHTML = data.filter(({name}) => name.includes(searchData)).map(({name}) => name);
 
     /**
      * Issue 3

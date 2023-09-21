@@ -3,6 +3,9 @@
  */
 function background(){
 
+    let bodyBackground = document.querySelector("body");
+    bodyBackground.style.backgroundColor = "#BECCC3";
+
     /**
      * Tarefa/Issue  1
      *
@@ -19,6 +22,11 @@ function background(){
  */
 function show(){
 
+    let firstName = document.getElementById("fname").value;
+    let lastName = document.getElementById("lname").value;
+    let fullName = firstName + " " + lastName;
+    document.getElementById("result").innerHTML = fullName;
+
      /**
       * Issue  2
       *
@@ -33,7 +41,20 @@ function show(){
  */
 function search(){
 
-    var data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
+    let data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
+    let procura = document.getElementById("name").value;
+    let mostraResultado = document.getElementById("search");
+    let newData = [];
+
+    for (i=0; i<data.length; i++){
+        if (procura == "") {
+            mostraResultado.innerHTML = "";
+        } else if (data[i].name.substring(0,procura.length).toUpperCase() === procura.toUpperCase()){
+            newData.push(data[i].name);
+        }
+    }
+
+    mostraResultado.innerHTML = newData
 
     /**
      * Issue 3

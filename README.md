@@ -10,7 +10,7 @@ abertas no Github no repositório original que devem ser implementadas. Estas
 desenvolvidos no exercício a fim de permitir que os testes automáticos
 (correção automática) possam passar com sucesso.
 
-## Como executar os testes? 💡
+## Como executar os testes? 💡i
 
 Você pode depurar o seu projeto por meio dos comandos:
 

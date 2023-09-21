@@ -79,7 +79,7 @@ function search(){
   
     // dadosFiltrados filtra dentro dos nomes, os que incluem nomeFiltrado
     let dadosFiltrados = data.filter(
-        item => item.name.toLowerCase().includes(nomeFiltrado)
+        item => item.name.toLowerCase().startsWith(nomeFiltrado)
         );  
    
     // Remove os nós filhos caso não tenha nada escrito no campo

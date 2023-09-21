@@ -1,5 +1,5 @@
 /**
- * Aplica a cor #BECCC3 no background do body da página
+ * Aplica a cor #BECCC3 no background do body da página teste
  */
 function background(){
 

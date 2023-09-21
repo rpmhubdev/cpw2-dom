@@ -67,7 +67,7 @@ function search() {
 
   data.forEach(function (item) {
     if (item.name.toUpperCase().startsWith(searchText)) {
-      var nameElement = document.createElement("p");
+      var nameElement = document.createElement('div');
       nameElement.textContent = item.name;
       searchDiv.appendChild(nameElement);
     }

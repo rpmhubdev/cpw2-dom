@@ -9,6 +9,7 @@ function background(){
      * Desenvolva uma função capaz de trocar a cor do fundo da página, ou seja,
      * alterar o background do body para a cor #BECCC3.
      */
+    document.body.style.backgroundColor = "#BECCC3";
 
 }
 
@@ -25,33 +26,34 @@ function show(){
       * Recupera os valores dos campos de texto cujo o id='fname' e id='lname' e apresente o nome
       * e o sobrenome de uma pessoa (separado por um espaço) na div id='result'
       */
+
+        const firstName = document.getElementById('fname').value;
+        const lastName = document.getElementById('lname').value;
+
+        const fullName = firstName + ' ' + lastName;
+
+        document.getElementById('result').textContent = fullName;
 }
 
 /**
  * Filtra o array de objetos (data) de acordo com os caracteres
  * digitados no campo de texto id='name'
  */
-function search(){
+function search() {
+    var searchTerm = document.getElementById('name').value.toLowerCase();
 
-    var data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
+    removeAllChildren('search');
 
-    /**
-     * Issue 3
-     *
-     * Utilizando o array (data) de objetos JSON acima, desenvolva um código que permita com que os
-     * usuários procurem pelo nome de pessoas. Assim, quando o usuário digitar a letra 'r' no campo
-     * de texto (id='name'), todas as pessoas que iniciarem com essa letra devem ser apresentados.
-     * Consequentemente, quando for digitado 'ro' o sistema deve filtrar e apresentar na div com o
-     * id='search' as pessoas cujo o nome inicia com 'ro'.
-     *
-     * Segue algumas funções que podem auxiliar na resolução da questão:
-     *      substr - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/substr
-     *      length - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/length
-     *      toUpperCase - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase
-     *
-     * Além disso, a função removeAllChildren abaixo também pode ser útil para o desenvolvimento da solução
-     */
+    for (var i = 0; i < data.length; i++) {
+        var name = data[i].name.toLowerCase();
 
+        if (name.startsWith(searchTerm)) {
+            var para = document.createElement('div');
+            result.textContent = data[i].name;
+
+            document.getElementById('search').appendChild(result);
+        }
+    }
 }
 
 /**

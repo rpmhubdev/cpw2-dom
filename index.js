@@ -1,18 +1,16 @@
 /**
  * Aplica a cor #BECCC3 no background do body da página
  */
-function background(){
+function background() {
+  let bodyBackground = document.querySelector("body");
+  bodyBackground.style.backgroundColor = "#BECCC3";
 
-    let bodyBackground = document.querySelector("body");
-    bodyBackground.style.backgroundColor = "#BECCC3";
-
-    /**
-     * Tarefa/Issue  1
-     *
-     * Desenvolva uma função capaz de trocar a cor do fundo da página, ou seja,
-     * alterar o background do body para a cor #BECCC3.
-     */
-
+  /**
+   * Tarefa/Issue  1
+   *
+   * Desenvolva uma função capaz de trocar a cor do fundo da página, ou seja,
+   * alterar o background do body para a cor #BECCC3.
+   */
 }
 
 /**
@@ -20,59 +18,73 @@ function background(){
  * e apresente o nome e o sobrenome de uma pessoa (separado por um espaço)
  * na div id='result'
  */
-function show(){
+function show() {
+  let firstName = document.getElementById("fname").value;
+  let lastName = document.getElementById("lname").value;
+  let fullName = firstName + " " + lastName;
+  document.getElementById("result").innerHTML = fullName;
 
-    let firstName = document.getElementById("fname").value;
-    let lastName = document.getElementById("lname").value;
-    let fullName = firstName + " " + lastName;
-    document.getElementById("result").innerHTML = fullName;
-
-     /**
-      * Issue  2
-      *
-      * Recupera os valores dos campos de texto cujo o id='fname' e id='lname' e apresente o nome
-      * e o sobrenome de uma pessoa (separado por um espaço) na div id='result'
-      */
+  /**
+   * Issue  2
+   *
+   * Recupera os valores dos campos de texto cujo o id='fname' e id='lname' e apresente o nome
+   * e o sobrenome de uma pessoa (separado por um espaço) na div id='result'
+   */
 }
 
 /**
  * Filtra o array de objetos (data) de acordo com os caracteres
  * digitados no campo de texto id='name'
  */
-function search(){
+function search() {
+  let data = [
+    { name: "Rodrigo" },
+    { name: "Ricardo" },
+    { name: "Fabio" },
+    { name: "Alex" },
+    { name: "Sílvia" },
+  ];
+  let procura = document.getElementById("name").value;
+  let mostraResultado = document.getElementById("search");
+  let newData = [];
 
-    let data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
-    let procura = document.getElementById("name").value;
-    let mostraResultado = document.getElementById("search");
-    let newData = [];
+  removeAllChildren(mostraResultado);
 
-    for (i=0; i<data.length; i++){
-        if (procura == "") {
-            mostraResultado.innerHTML = "";
-        } else if (data[i].name.substring(0,procura.length).toUpperCase() === procura.toUpperCase()){
-            newData.push(data[i].name);
-        }
+  for (i = 0; i < data.length; i++) {
+    if (
+      data[i].name.substring(0, procura.length).toUpperCase() ===
+      procura.toUpperCase()
+    ) {
+      newData.push(data[i].name);
     }
+  }
 
-    mostraResultado.innerHTML = newData
+  for (i = 0; i < newData.length; i++) {
+    if (procura === "") {
+      removeAllChildren(mostraResultado);
+    } else {
+      let div = document.createElement("div");
+      div.innerHTML = newData[i];
+      mostraResultado.appendChild(div);
+    }
+  }
 
-    /**
-     * Issue 3
-     *
-     * Utilizando o array (data) de objetos JSON acima, desenvolva um código que permita com que os
-     * usuários procurem pelo nome de pessoas. Assim, quando o usuário digitar a letra 'r' no campo
-     * de texto (id='name'), todas as pessoas que iniciarem com essa letra devem ser apresentados.
-     * Consequentemente, quando for digitado 'ro' o sistema deve filtrar e apresentar na div com o
-     * id='search' as pessoas cujo o nome inicia com 'ro'.
-     *
-     * Segue algumas funções que podem auxiliar na resolução da questão:
-     *      substr - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/substr
-     *      length - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/length
-     *      toUpperCase - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase
-     *
-     * Além disso, a função removeAllChildren abaixo também pode ser útil para o desenvolvimento da solução
-     */
-
+  /**
+   * Issue 3
+   *
+   * Utilizando o array (data) de objetos JSON acima, desenvolva um código que permita com que os
+   * usuários procurem pelo nome de pessoas. Assim, quando o usuário digitar a letra 'r' no campo
+   * de texto (id='name'), todas as pessoas que iniciarem com essa letra devem ser apresentados.
+   * Consequentemente, quando for digitado 'ro' o sistema deve filtrar e apresentar na div com o
+   * id='search' as pessoas cujo o nome inicia com 'ro'.
+   *
+   * Segue algumas funções que podem auxiliar na resolução da questão:
+   *      substr - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/substr
+   *      length - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/length
+   *      toUpperCase - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase
+   *
+   * Além disso, a função removeAllChildren abaixo também pode ser útil para o desenvolvimento da solução
+   */
 }
 
 /**
@@ -80,8 +92,8 @@ function search(){
  *
  * @param {*} node Um objeto HTML Node
  */
-function removeAllChildren(node){
-    while (node.hasChildNodes()) {
-        node.removeChild(node.firstChild);
-    }
+function removeAllChildren(node) {
+  while (node.hasChildNodes()) {
+    node.removeChild(node.firstChild);
+  }
 }

@@ -40,20 +40,17 @@ function show(){
  * digitados no campo de texto id='name'
  */
 function search() {
-    var searchTerm = document.getElementById('name').value.toLowerCase();
+  var searchText = document.getElementById("name").value.toUpperCase();
+  var searchDiv = document.getElementById("search");
+  searchDiv.innerHTML = "";
 
-    removeAllChildren('search');
-
-    for (var i = 0; i < data.length; i++) {
-        var name = data[i].name.toLowerCase();
-
-        if (name.startsWith(searchTerm)) {
-            var para = document.createElement('div');
-            result.textContent = data[i].name;
-
-            document.getElementById('search').appendChild(result);
-        }
+  data.forEach(function (item) {
+  if (item.name.toUpperCase().startsWith(searchText)) {
+    var nameElement = document.createElement("div");
+    nameElement.textContent = item.name;
+    searchDiv.appendChild(nameElement);
     }
+  });
 }
 
 /**

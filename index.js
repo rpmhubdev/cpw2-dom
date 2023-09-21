@@ -64,14 +64,25 @@ function search(){
 
     let letters = document.getElementById("name").value;
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i=0; i < data.length; i++) {
         if ((letters.length > 0) &&
             (data[i].name.substr(0, letters.length).toUpperCase() == letters.toUpperCase())) {
             match.push(data[i].name);
         }
-      }    
+    }
 
-    document.getElementById("search").textContent = match;
+    if (letters.length > 0) {
+        document.getElementById("search").innerHTML = '';
+        match.forEach(
+            function (item) {
+                let newDiv = document.createElement("div");
+                newDiv.textContent = item;
+                document.getElementById("search").appendChild(newDiv);
+            }
+        );
+    } else {
+        removeAllChildren(document.getElementById("search"));
+    }
 
 }
 

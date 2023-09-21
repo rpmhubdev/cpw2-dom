@@ -28,6 +28,9 @@
 				"workbench.iconTheme": "eq-material-theme-icons-light"
 			}
 		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
